@@ -3,6 +3,7 @@ package com.stan.quick_vote.service;
 import com.stan.quick_vote.dto.AssociateRequestDTO;
 import com.stan.quick_vote.dto.AssociateResponseDTO;
 import com.stan.quick_vote.dto.CooperativeResponseDTO;
+import com.stan.quick_vote.exceptions.NotFoundException;
 import com.stan.quick_vote.model.Associate;
 import com.stan.quick_vote.repository.AssociateRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,13 @@ import org.springframework.stereotype.Service;
 public class AssociateService {
     private final AssociateRepository associateRepository;
     private final CooperativeService cooperativeService;
+
+    public AssociateResponseDTO findById(String id) {
+        Associate associate = associateRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Associate not found"));
+
+        return mapToResponseDTO(associate);
+    }
 
     public AssociateResponseDTO createAssociate(AssociateRequestDTO associateRequestDTO) {
         CooperativeResponseDTO cooperative = cooperativeService
