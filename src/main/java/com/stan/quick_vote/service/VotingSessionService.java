@@ -19,6 +19,13 @@ public class VotingSessionService {
     private final VotingSessionRepository votingSessionRepository;
     private final TopicService topicService;
 
+    public VotingSessionResponseDTO findById(String id) {
+        VotingSession session = votingSessionRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Voting session not found"));
+
+        return toResponseDTO(session);
+    }
+
     public VotingSessionResponseDTO createVotingSession(VotingSessionRequestDTO dto) {
         TopicResponseDTO topicResponseDTO = topicService.findById(dto.getTopicId());
 
