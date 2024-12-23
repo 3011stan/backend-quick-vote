@@ -1,5 +1,6 @@
 package com.stan.quick_vote.model;
 
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Document(collection = "voting_sessions")
+@Builder
 public class VotingSession {
 
     @Id
@@ -17,11 +19,13 @@ public class VotingSession {
 
     private String topicId;
 
+    private String name;
+
     private String cooperativeId;
 
-    private LocalDateTime startAt = LocalDateTime.now();
+    private LocalDateTime startAt;
 
-    private LocalDateTime endAt = LocalDateTime.now().plusMinutes(1);
+    private LocalDateTime endAt;
 
     @CreatedDate
     private LocalDateTime createdAt;
