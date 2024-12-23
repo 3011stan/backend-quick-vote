@@ -44,13 +44,8 @@ java -jar build/libs/backend-quick-vote-0.0.1-SNAPSHOT.jar
 ```
 
 ### 4. Endpoints Disponíveis
-- **Base URL:** `http://localhost:8080`
-
-| Método | Endpoint                                 | Descrição                          |
-|---------|-----------------------------------------|--------------------------------------|
-| POST    | `/voting-sessions`                      | Cria uma nova sessão de votação     |
-| GET     | `/voting-sessions/{id}`                 | Retorna os detalhes de uma sessão    |
-| POST    | `/voting-sessions/{id}/votes`           | Registra um voto na sessão          |
+Acesse a url abaixo para visualizar a documentação dos endpoints:
+- **Base URL:** `http://localhost:8080/swagger-ui/index.html#/`
 
 ## Estrutura do Projeto
 
@@ -80,6 +75,7 @@ Os testes verificam as principais funcionalidades do sistema, incluindo:
 - Registro de votos
 - Validações de sessões
 - Persistência de dados
+- Resultados de votação
 
 ## Futuras Melhorias
 
