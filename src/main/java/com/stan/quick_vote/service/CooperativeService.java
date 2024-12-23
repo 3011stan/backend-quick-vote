@@ -2,6 +2,7 @@ package com.stan.quick_vote.service;
 
 import com.stan.quick_vote.dto.CooperativeRequestDTO;
 import com.stan.quick_vote.dto.CooperativeResponseDTO;
+import com.stan.quick_vote.exceptions.NotFoundException;
 import com.stan.quick_vote.model.Cooperative;
 import com.stan.quick_vote.repository.CooperativeRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ public class CooperativeService {
 
     public CooperativeResponseDTO findById(String id) {
         Cooperative cooperative = cooperativeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Cooperative not found"));
+                .orElseThrow(() -> new NotFoundException("Cooperative not found"));
 
         return mapToResponseDTO(cooperative);
     }
