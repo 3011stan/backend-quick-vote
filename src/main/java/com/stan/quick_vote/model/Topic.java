@@ -1,6 +1,7 @@
 package com.stan.quick_vote.model;
 
 
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Document(collection = "topics")
+@Builder
 public class Topic {
 
     @Id
